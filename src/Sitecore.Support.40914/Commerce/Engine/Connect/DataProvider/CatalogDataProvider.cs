@@ -94,7 +94,8 @@
         {
           if (field.Name.Equals("VariationProperties"))
           {
-            fields.Add(field.ID, repository.GetVariationProperties());
+            var val = repository.GetVariationProperties() ?? String.Empty;
+            fields.Add(field.ID, val);
           }
           else if (field.Name.Equals("AreaServed"))
           {
@@ -152,7 +153,7 @@
             var settingsField = templateFields.FirstOrDefault(x => x.Name.Equals(setting.Key));
             if (settingsField != null)
             {
-              fields.Add(settingsField.ID, setting.Value);
+              fields.Add(settingsField.ID, setting.Value ?? String.Empty);
             }
           }
         }
